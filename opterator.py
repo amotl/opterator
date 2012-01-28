@@ -102,10 +102,11 @@ def opterate(func):
         if variable_name in kw_params:
             default = defaults[kw_params.index(variable_name)]
 
-        if default == False:
-            action = 'store_true'
-        elif default == True:
-            action = 'store_false'
+        if type(default) is bool:
+            if default == False:
+                action = 'store_true'
+            elif default == True:
+                action = 'store_false'
         elif type(default) in (list, tuple):
             action = 'append'
         else:
